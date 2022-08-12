@@ -13,41 +13,25 @@ public class DimensionalPrinting {
         final int columnInput = scanner.nextInt();
         System.out.println("Enter the empty space size");
         int emptySpace = scanner.nextInt();
+        int rowNextSpace = 1;
 
-        int rowFlag = 0;
-
-        boolean isEntireRowPrint = true;
-
-        for (int i = 0; i < rowInput; i++) {
-
-            int columnFlag = 0;
-            rowFlag++;
-
-            for (int j = 0; j < columnInput; j++) {
-                if (isEntireRowPrint) {
+        for (int i = 1; i <= rowInput; i++) {
+            int columnNextSpace = 1;
+            for (int j = 1; j <= columnInput; j++) {
+                if (i % rowNextSpace == 0 || j % columnNextSpace == 0) {
                     System.out.print("*\t");
+                    columnNextSpace += emptySpace + 1;
                 } else {
-                    if (j == 0) {
-                        System.out.print("*\t");
-                    } else {
-                        columnFlag++;
-                        if (columnFlag <= emptySpace) {
-                            System.out.print("\t");
-                        } else {
-                            System.out.print("*\t");
-                            columnFlag = 0;
-                        }
-                    }
+                    System.out.print("\t");
                 }
             }
 
-            if (rowFlag <= emptySpace) {
-                isEntireRowPrint = false;
+            if (i % rowNextSpace == 0) {
+                rowNextSpace += emptySpace + 1;
+                System.out.println();
             } else {
-                isEntireRowPrint = true;
-                rowFlag = 0;
+                System.out.println("\t");
             }
-            System.out.println();
         }
     }
 }
