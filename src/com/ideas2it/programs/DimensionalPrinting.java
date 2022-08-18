@@ -13,20 +13,14 @@ public class DimensionalPrinting {
         final int columnInput = scanner.nextInt();
         System.out.println("Enter the empty space size");
         int emptySpace = scanner.nextInt();
-        int rowNextSpace = 1;
+        int N = emptySpace + 1;
 
-        for (int i = 1; i <= rowInput; i++) {
-            int columnNextSpace = 1;
-            for (int j = 1; j <= columnInput; j++) {
-                if (i % rowNextSpace == 0 || j % columnNextSpace == 0) {
+        for (int i = 0; i <= rowInput; i++) {
+            for (int j = 0; j <= columnInput; j++) {
+                if (i % N == 0 || j % N == 0) {
                     System.out.print("*");
-                    columnNextSpace += emptySpace + 1;
                 }
-                System.out.print("\t");
-            }
-
-            if (i % rowNextSpace == 0) {
-                rowNextSpace += emptySpace + 1;
+                System.out.print(" ");
             }
             System.out.println();
         }
